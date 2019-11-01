@@ -1,5 +1,7 @@
 node {
    def mvnHome
+   def p1='**/*.war'
+   def p2='**/surefire-reports/*.xml'
    stage('Preparation') {
       
       git 'https://github.com/marinisubhash/spring-junit.git'
@@ -21,15 +23,14 @@ node {
    }
   
      stage ('Deploy') {
-     def p1='**/*.war'
-     def p2='**/surefire-reports/*.xml'
+     
      if(p1)
      {
-           sh 'cp ${p1} /Users/Shared/Tomcat.47/webapps/'
+           sh 'cp "${p1}" /Users/Shared/Tomcat.47/webapps/'
      }
            else
            {
-           sh 'cp ${p2} /Users/Shared/Tomcat.47/webapps/'
+           sh 'cp "${p2}" /Users/Shared/Tomcat.47/webapps/'
            }
  }
    stage('Results') {
