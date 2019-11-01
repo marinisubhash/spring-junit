@@ -2,7 +2,7 @@ node {
    def mvnHome
    stage('Preparation') {
       
-      git 'https://github.com/marinisubhash/spring-boot.git'
+      git 'https://github.com/marinisubhash/spring-junit.git'
                
       mvnHome = tool 'Maven'
    }
