@@ -1,0 +1,28 @@
+node {
+   def mvnHome
+   stage('Preparation') {
+      
+      git 'https://github.com/marinisubhash/spring-boot.git'
+               
+      mvnHome = tool 'Maven'
+   }
+   stage('Build') {
+      // Run the maven build
+      withEnv(["MVN_HOME=$M2_HOME"]) {
+        
+            sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
+      }
+       stage('Test') {
+      withEnv(["MVN_HOME=$M2_HOME"]) {
+        
+            sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean test'
+      }
+   }
+   }
+     stage ('Deploy') {
+           sh 'cp target/*.war /Users/Shared/Tomcat.47/webapps/'
+            }
+   stage('Results') {
+      archiveArtifacts 'target/*.war'
+   }
+}
