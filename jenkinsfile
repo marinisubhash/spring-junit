@@ -21,12 +21,13 @@ node {
    }
   
      stage ('Deploy') {
+     
            sh 'cp **/*.war /Users/Shared/Tomcat.47/webapps/'
-            sh 'cp target/surefire-reports/*.xml /Users/Shared/Tomcat.47/webapps/'
+           sh 'cp **/surefire-reports/*.xml /Users/Shared/Tomcat.47/webapps/'
             }
    stage('Results') {
-      archiveArtifacts 'target/*.war'
-      archiveArtifacts 'target/surefire-reports/*.xml'
-     junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: true
+      archiveArtifacts '**/*.war'
+      archiveArtifacts '**/surefire-reports/*.xml'
+     junit testResults: '**/surefire-reports/*.xml', allowEmptyResults: true
    }
 }
