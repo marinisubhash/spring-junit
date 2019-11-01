@@ -21,7 +21,7 @@ node {
    }
   
      stage ('Deploy') {
-           sh 'cp target/*.war /Users/Shared/Tomcat.47/webapps/'
+           sh 'cp **/*.war /Users/Shared/Tomcat.47/webapps/'
             sh 'cp target/surefire-reports/*.xml /Users/Shared/Tomcat.47/webapps/'
             }
    stage('Results') {
