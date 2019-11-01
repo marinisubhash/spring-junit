@@ -25,6 +25,6 @@ node {
             }
    stage('Results') {
       archiveArtifacts 'target/*.war'
-     junit testResults: 'target/*.xml', allowEmptyResults: true
+     junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: true
    }
 }
