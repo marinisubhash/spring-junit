@@ -7,6 +7,7 @@
 
     <groupId>com.mkyong.spring</groupId>
     <artifactId>testing-junit5-mockito</artifactId>
+    <packaging>war</packaging>
     <version>1.0</version>
 
     <properties>
