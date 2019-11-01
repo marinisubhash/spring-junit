@@ -25,5 +25,6 @@ node {
             }
    stage('Results') {
       archiveArtifacts 'target/*.war'
+     junit testResults: 'target/*.xml', allowEmptyResults: true
    }
 }
