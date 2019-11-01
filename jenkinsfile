@@ -22,11 +22,11 @@ node {
   
      stage ('Deploy') {
      
-     if("p1=**/*.war")
-     {
-           sh 'cp $p1 /Users/Shared/Tomcat.47/webapps/'
+     withEnv("p1=**/*.war && p2=**/surefire-reports/*.xml") {
+         if(p1)  {
+         sh 'cp $p1 /Users/Shared/Tomcat.47/webapps/'
      }
-           else if("p2=**/surefire-reports/*.xml")
+          else
            {
            sh 'cp $p2 /Users/Shared/Tomcat.47/webapps/'
            }
