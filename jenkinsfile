@@ -22,14 +22,15 @@ node {
   
      stage ('Deploy') {
      
-     withEnv("p1=**/*.war && p2=**/surefire-reports/*.xml") {
+     withEnv("p1=**/*.war") {
          if(p1)  {
          sh 'cp "$p1" /Users/Shared/Tomcat.47/webapps/'
      }
           else
            {
-           sh 'cp "$p2" /Users/Shared/Tomcat.47/webapps/'
+           sh 'cp **/surefire-reports/*.xml /Users/Shared/Tomcat.47/webapps/'
            }
+ }
  }
    stage('Results') {
       archiveArtifacts '**/*.war'
